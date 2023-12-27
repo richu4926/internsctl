@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#internsctl command version
+VERSION="v0.1.0"
+
+function display_help(){
+  echo "Usage: internsctl [OPTIONS]"
+  echo "Option:"
+  echo " --cpu-info  Display CPU information"
+  echo " --help      Display this help message"
+  echo " --version   Display command version"
+}
+
+
+function display_version() {
+
+  echo "internsctl $VERSION"
+}
+
+function get_cpu_info() {
+
+  echo "CPU Information:"
+lscpu
+}
+
+#main logic 
+case $1 in 
+  --help)
+    display_help
+    ;;
+ --version)
+  display_help
+  ;;
+ --cpu-info)
+  get_cpu_info
+  ;;
+*)
+
+  echo "Error:Invalid option Use'intersctl--help'for usage instructions."
+
+  exit 1
+  ;;
+
+esac
